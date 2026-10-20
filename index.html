@@ -14,18 +14,8 @@
 <button onclick="filter1()">Black & White</button>
 <button onclick="filter2()">Bright</button>
 <button onclick="filter3()">Blur</button>
-<button onclick="filter4()">Normal</button>
+<button onclick="reset()">Normal</button>
 </div>
-<script>
-let photo=document.getElementById('photo');
-upload.onchange=e=>photo.src=URL.createObjectURL(e.target.files[0]);
-function filter1(){photo.style.filter='grayscale(100%)'}
-function filter2(){photo.style.filter='brightness(150%)'}
-function filter3(){photo.style.filter='blur(5px)'}
-function filter4(){photo.style.filter='none'}
-</script>
-</<script src="script.js"></<script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-</html>
-
 </html>
