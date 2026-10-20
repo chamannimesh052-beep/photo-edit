@@ -1,4 +1,4 @@
-#<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Chaman Edit Pro</title>
@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Chaman Edit Pro 🔥</h1>
-<input type="file" id="upload">
+<input type="file" id="upload" accept="image/*">
 <div class="box">
 <img id="photo" src="">
 </div>
@@ -14,9 +14,15 @@
 <button onclick="filter1()">Black & White</button>
 <button onclick="filter2()">Bright</button>
 <button onclick="filter3()">Blur</button>
-<button onclick="reset()">Normal</button>
+<button onclick="filter4()">Normal</button>
 </div>
-<button id="download">Download Karo</button>
-<script src="script.js"></script>
+<script>
+let photo=document.getElementById('photo');
+upload.onchange=e=>photo.src=URL.createObjectURL(e.target.files[0]);
+function filter1(){photo.style.filter='grayscale(100%)'}
+function filter2(){photo.style.filter='brightness(150%)'}
+function filter3(){photo.style.filter='blur(5px)'}
+function filter4(){photo.style.filter='none'}
+</script>
 </body>
 </html>
