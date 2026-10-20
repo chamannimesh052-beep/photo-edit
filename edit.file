@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chaman Edit Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Chaman Edit Pro 🔥</h1>
+<input type="file" id="upload">
+<div class="box">
+<img id="photo" src="">
+</div>
+<div class="btns">
+<button onclick="filter1()">Black & White</button>
+<button onclick="filter2()">Bright</button>
+<button onclick="filter3()">Blur</button>
+<button onclick="reset()">Normal</button>
+</div>
+<button id="download">Download Karo</button>
+<script src="script.js"></script>
+</body>
+</html>
