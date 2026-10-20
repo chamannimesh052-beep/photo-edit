@@ -101,5 +101,82 @@ document.getElementById('noiseSlider').addEventListener('input',e=>{
   document.getElementById('noiseVal').innerText=e.target.value+'%';
 });
 </script>
-</body>
+</<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaman AI Edit Pro MAX V3</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{background:#000;color:#fff}
+.phone{max-width:430px;margin:0 auto;background:#0a0a0a;min-height:100vh;border:1px solid #222}
+.top{padding:12px;display:flex;justify-content:space-between;align-items:center;background:#111;position:sticky;top:0;z-index:20}
+.icon{background:#ffffff22;border:none;width:36px;height:36px;border-radius:50%;color:#fff}
+.preview{position:relative;background:#111;aspect-ratio:9/12;overflow:hidden}
+.preview video,.preview img{width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;bottom:30%;width:100%;text-align:center;font-weight:900;font-size:22px;text-shadow:0 2px 10px #000,-2px -2px 0 #000,2px -2px 0 #000,2px 2px 0 #000,-2px 2px 0 #000;pointer-events:none}
+.txt{position:absolute;top:20%;width:100%;text-align:center;font-weight:800;font-size:28px;text-shadow:0 2px 8px #000;pointer-events:none}
+.bar{display:flex;gap:8px;padding:10px;overflow-x:auto;background:#0a0a0a;border-bottom:1px solid #222}
+.t{padding:8px 14px;background:#1c1c1e;border:1px solid #333;border-radius:20px;font-size:12px;white-space:nowrap;cursor:pointer}
+.t.active{background:#fff;color:#000;font-weight:700}
+.panel{background:#1c1c1e;border-radius:20px 20px 0 0;padding:16px;margin-top:8px}
+.row{display:flex;justify-content:space-between;margin:10px 0 4px;font-size:13px;font-weight:600}
+input[type=range]{width:100%;accent-color:#0A84FF}
+.btn{background:#0A84FF;color:#fff;border:none;width:100%;padding:14px;border-radius:30px;font-weight:700;font-size:15px;margin-top:10px;cursor:pointer}
+.btn2{background:#fff;color:#000;border:none;width:100%;padding:14px;border-radius:30px;font-weight:800;font-size:15px;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.f{aspect-ratio:1;background:#2c2c2e;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;border:2px solid transparent;cursor:pointer;padding:6px}
+.f.active{border-color:#0A84FF;background:#0A84FF22}
+.up{border:2px dashed #444;border-radius:16px;padding:20px;text-align:center;margin:10px 0;background:#111;cursor:pointer}
+#fileInput{display:none}
+.ai-badge{background:linear-gradient(90deg,#a855f7,#ec4899);padding:3px 8px;border-radius:20px;font-size:10px;font-weight:800;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="top"><button class="icon" onclick="location.reload()">✕</button><b>Chaman AI PRO MAX V3 <span class="ai-badge">AI</span></b><button class="icon" onclick="exportFinal()">⬇</button></div>
+<div class="preview" id="box">
+<video id="vid" style="display:none" controls playsinline></video>
+<img id="img" src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600" style="display:block">
+<div class="cap" id="cap"></div>
+<div class="txt" id="txtOver"></div>
+</div>
+<div class="bar">
+<div class="t active" onclick="show('ai',this)">🤖 AI BG</div>
+<div class="t" onclick="show('enh',this)">✨ AI Enhance</div>
+<div class="t" onclick="show('voice',this)">🎤 Voice AI</div>
+<div class="t" onclick="show('thumb',this)">🖼️ Thumb AI</div>
+<div class="t" onclick="show('filter',this)">🎨 Filter</div>
+<div class="t" onclick="show('text',this)">📝 Text</div>
+<div class="t" onclick="show('music',this)">🎵 Music</div>
+</div>
+<div class="panel" id="p-ai">
+<h3 style="text-align:center">🤖 AI Background Remove <span class="ai-badge">NEW</span></h3>
+<div class="grid">
+<div class="f active" onclick="bgAi('none',this)"><span style="font-size:22px">🖼️</span>Normal</div>
+<div class="f" onclick="bgAi('blur',this)"><span style="font-size:22px">🌫️</span>Blur BG</div>
+<div class="f" onclick="bgAi('remove',this)"><span style="font-size:22px">✂️</span>Remove</div>
+<div class="f" onclick="bgAi('mountain',this)"><span style="font-size:22px">🏔️</span>Mountain</div>
+</div>
+<div class="up" onclick="document.getElementById('fileInput').click()">📁 Upload Video/Photo</div>
+<input type="file" id="fileInput" accept="video/*,image/*">
+</div>
+<div class="panel" id="p-enh" style="display:none">
+<h3 style="text-align:center">✨ AI Auto Enhance <span class="ai-badge">AI</span></h3>
+<div class="grid">
+<div class="f" onclick="aiEnh('auto')"><span style="font-size:22px">🪄</span>Auto Fix</div>
+<div class="f" onclick="aiEnh('4k')"><span style="font-size:22px">📈</span>4K Upscale</div>
+<div class="f" onclick="aiEnh('face')"><span style="font-size:22px">😊</span>Face Retouch</div>
+<div class="f" onclick="aiEnh('hdr')"><span style="font-size:22px">💡</span>HDR</div>
+</div>
+<div class="row"><span>AI Strength</span><span id="aiVal">80%</span></div>
+<input type="range" id="aiRange" min="0" max="100" value="80">
+<button class="btn" onclick="aiEnh('auto')">✨ Enhance Now</button>
+</div>
+<div class="panel" id="p-voice" style="display:none">
+<h3 style="text-align:center">🎤 AI Voice to Caption <span class="ai-badge">AI</span></h3>
+<button class="btn" id="voiceBtn" onclick="startVoice()">🎙️ Bolna Shuru Karo</button>
+<p style="font-size:12px;opacity:0.6;text-align:center;margin-top:8px" id="voiceStatus">Bolo jaise "It's been 11 years now" - AI caption bana dega</p>
+<input type="text" id="cap
 </html>
