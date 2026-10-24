@@ -1,3 +1,13 @@
 body{background:#000;color:#fff;text-align:center}
 #photo{max-width:90%;margin-top:10px}
-button{padding:10px;margin:5px;background:orange}
+button{padding:10px;margin:5px;background:photo-edit/
+├── index.html          (Landing Page)
+├── max.html            (Main AI Editor - V3)
+├── css/
+│   └── style.css
+├── js/
+│   ├── app.js
+│   ├── ai-bg.js        (AI BG Remove)
+│   ├── ai-enhance.js   (AI Enhance)
+│   └── voice-ai.js     (Voice to Caption)
+└── README.md
