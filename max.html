@@ -62,4 +62,4 @@ function startVoice(){const SR=window.SpeechRecognition||window.webkitSpeechReco
 function exportFinal(){const c=document.createElement('canvas');const ctx=c.getContext('2d');c.width=img.naturalWidth||1080;c.height=img.naturalHeight||1920;ctx.drawImage(img,0,0,c.width,c.height);ctx.fillStyle='white';ctx.font='bold 60px sans-serif';ctx.textAlign='center';if(txtOver.innerText)ctx.fillText(txtOver.innerText,c.width/2,c.height*0.2);if(cap.innerText)ctx.fillText(cap.innerText,c.width/2,c.height*0.8);const a=document.createElement('a');a.href=c.toDataURL();a.download='chaman.jpg';a.click();}
 </script>
 </body>
-</html> Filter1,2,3 sab 
+</html> 
